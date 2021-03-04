@@ -1,25 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import ExcelJS from "exceljs";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+
+   const fileSelected = async (event)=>{
+       const workbook = new ExcelJS.Workbook();
+       const file = event.target.files[0];
+       const data = await file.arrayBuffer();
+       await workbook.xlsx.load(data);
+   }
+
+	return (
+		<div className="App">
+			<label> Choose an excel </label>
+			<input type="file"
+             id="excel" 
+             name="excel" 
+             accept=".xlsx, .xls"
+             onChange ={fileSelected} />
+		</div>
+	);
+};
 
 export default App;
