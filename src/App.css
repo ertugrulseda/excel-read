@@ -22,3 +22,11 @@
 .file-input{
   margin-top: 15vh;
 }
+.btn-clear{
+  padding: 0 15px;
+}
+
+.inp-excel{
+  border-style: none !important;
+  padding: 0 15px !important;
+}

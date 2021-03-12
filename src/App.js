@@ -18,7 +18,7 @@ const App = () => {
 		let objRange = worksheet.getSheetValues();
 		let arr = [];
 		objRange.forEach((item) => {
-			arr = [ ...arr, { make: item[1], model: item[2], price: item[3] } ];
+			arr = [ ...arr, { make: item[1], model: item[2], price: item[3] ,"license plate number":item[4]} ];
 		});
 		setRowData(arr);
 	};
@@ -31,15 +31,15 @@ const App = () => {
 		<div className="App">
 			<div className="Content">
 				<div className="file-input">
-					<label> Choose an excel </label>
-					<input type="file" ref={fileInp} id="excel" name="excel" accept=".xlsx, .xls" onChange={fileSelected} />
-					<button onClick={clear}>Clear</button>
+					<input type="file" ref={fileInp} className="inp-excel"  accept=".xlsx, .xls" onChange={fileSelected} />
+					<button className="btn-clear" onClick={clear}>Clear</button>
 				</div>
-				<div className="ag-theme-alpine" style={{ height: 400, width: 600 }}>
+				<div className="ag-theme-alpine" style={{ height: 400, width: 800 }}>
 					<AgGridReact  rowData={rowData}>
 						<AgGridColumn field="make" />
 						<AgGridColumn field="model" />
 						<AgGridColumn field="price" />
+						<AgGridColumn field="license plate number" />
 					</AgGridReact>
 				</div>
 			</div>
